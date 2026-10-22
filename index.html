@@ -1,0 +1,227 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COLOR LAB · PLAY!</title><meta name="description" content="색 순서 기억하기와 RGB 색 맞추기. COLOR LAB 컬러 게임."><style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;800;900&display=swap');
+:root{font-family:'Noto Sans KR',system-ui,sans-serif;color:#302658;background:#4ccce1}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12px 12px,#ffffff30 3px,transparent 4px) 0 0/35px 35px;min-height:100vh}button,input,a{touch-action:manipulation}button{font:inherit;font-weight:800;color:#302658;border:3px solid #302658;background:#fff;border-radius:14px;padding:10px 16px;cursor:pointer;box-shadow:0 4px 0 #302658;transition:transform .12s,box-shadow .12s}button:hover:not(:disabled){transform:translateY(-2px)}button:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 #302658}button:disabled{cursor:default;opacity:.55}button:focus-visible,a:focus-visible,input:focus-visible{outline:4px solid #ff36b1;outline-offset:5px}a{color:inherit}header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1320px;margin:auto;padding:24px 34px}.brand{font-size:clamp(25px,3vw,39px);font-weight:900;letter-spacing:-2px;text-decoration:none;color:#fff;text-shadow:3px 3px #302658,-1px -1px #302658;transform:rotate(-3deg);white-space:nowrap}.brand span{color:#ffe065}.brand i{display:inline-block;background:#ff5db5;color:white;font-size:12px;letter-spacing:0;text-shadow:none;border:2px solid #302658;border-radius:7px;padding:7px;transform:rotate(9deg);vertical-align:top;margin-left:8px}.tools{display:flex;align-items:center;gap:12px;font-size:12px}#connection{background:#fff9;border-radius:20px;padding:8px 12px;font-weight:800}main{max-width:1280px;margin:auto;padding:8px 30px 24px}nav{display:flex;gap:18px;max-width:880px;margin:10px 0 25px}nav button{flex:1;text-align:left;font-size:20px;padding:16px 24px;background:#eafaff}nav small{display:block;font-size:10px;letter-spacing:1.4px;margin-bottom:4px}nav button.selected{background:#ff64b5;color:#fff;transform:rotate(-1deg);box-shadow:0 6px 0 #9e3378}.layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px;align-items:start}.lab{position:relative;border:4px solid #302658;border-radius:26px;background:#fff8e9;box-shadow:0 9px 0 #302658,0 18px 0 #2aa7bf;overflow:hidden}.arena-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:18px 26px 12px;background:#7562d9;color:white}#tag{font-size:9px;font-weight:900;letter-spacing:2px;color:#f5dfff}h1{font-size:clamp(20px,2.3vw,29px);letter-spacing:-1px;margin:4px 0;font-weight:900}.arena-top button{font-size:12px;padding:9px 12px;white-space:nowrap;background:#ffdf65}.scoreline{display:flex;justify-content:space-between;padding:10px 26px;font-size:11px;font-weight:900;background:#e9e1ff;border-bottom:2px solid #d2c8ec}#stages{list-style:none;display:flex;justify-content:center;gap:9px;padding:12px 20px 4px;margin:0}#stages li{display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 12px;border:2px solid #e4d9d0;border-radius:12px;background:#f1e9de;font-size:10px;white-space:nowrap;color:#9c9494}#stages li b{font-size:13px}#stages li.active{background:#ffdc54;border-color:#302658;color:#302658;box-shadow:0 3px 0 #c68b1b;transform:translateY(-2px)}#stages li.done{background:#bdf3d6;color:#236d54;border-color:#54b28c}.game-body{position:relative;padding:14px 28px 24px}.display{background:#303452;border:4px solid #555779;border-radius:20px;color:white;box-shadow:inset 0 3px 0 #1d203b}.display-label{display:flex;align-items:center;justify-content:space-between;padding:10px 15px 0;font-size:11px;color:#d4daee}.live-dot{height:7px;width:7px;border-radius:50%;background:#83edbb;box-shadow:0 0 7px #83edbb}.lamp-area{text-align:center;padding:12px 10px 0}#lamp{display:flex;justify-content:center;gap:17px;--light:rgb(0,0,0)}#lamp i{width:39px;height:39px;border-radius:50%;border:4px solid #141b33;background:radial-gradient(circle at 35% 25%,#ffffff55,transparent 65%),var(--light);box-shadow:0 3px 0 #111729,0 0 16px color-mix(in srgb,var(--light),transparent 25%)}#lampCaption{font-size:9px;color:#a6b6d5;margin:8px 0 0}#status{font-size:19px;font-weight:900;text-align:center;min-height:27px;margin:8px 10px 13px;letter-spacing:-.6px}.console-view{perspective:850px;padding:20px 8px 9px}.console{position:relative;max-width:650px;margin:auto;background:linear-gradient(135deg,#eeeaf5,#c5c7e0);border:3px solid #343655;border-radius:25px;padding:14px 24px 12px;transform:rotateX(19deg);transform-style:preserve-3d;box-shadow:0 4px 0 #9196ba,0 9px 0 #777d9c,0 14px 0 #393d60,0 20px 15px #2a245544}.console-brand{display:flex;justify-content:space-between;font-weight:900;font-size:10px;color:#4e5272;letter-spacing:1px;margin:0 5px 15px}.console-brand span{font-size:7px;letter-spacing:1px}.screw{position:absolute;width:8px;height:8px;border-radius:50%;background:linear-gradient(45deg,#646986 42%,#c9cee1 44%,#c9cee1 56%,#646986 58%);box-shadow:0 1px 1px #fff}.s1{top:12px;left:10px}.s2{top:12px;right:10px}.s3{bottom:12px;left:10px}.s4{bottom:12px;right:10px}.pads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;transform-style:preserve-3d}.pads button{position:relative;aspect-ratio:1;min-width:0;border:0;border-radius:50%;padding:0;background:transparent;box-shadow:none;transform-style:preserve-3d;-webkit-tap-highlight-color:transparent;user-select:none}.pads button:hover:not(:disabled),.pads button:active:not(:disabled){transform:none;box-shadow:none}.pads button:disabled{opacity:1}.pads button>*{position:absolute;border-radius:50%;pointer-events:none}.socket{inset:-3px;background:linear-gradient(#343952,#727791);border:3px solid #282b43;box-shadow:0 4px 0 #a9aec9,inset 0 0 0 4px #41465f;transform:translateZ(0)}.barrel{inset:6px;background:var(--shade);border:2px solid color-mix(in srgb,var(--shade),#24203e 30%);box-shadow:0 9px 0 var(--shade),0 11px 2px #292747;transform:translateZ(7px)}.cap{inset:6px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;background:radial-gradient(ellipse at 35% 15%,#ffffff55,transparent 65%),var(--pad);border:3px solid color-mix(in srgb,var(--pad),white 45%);box-shadow:inset 0 -5px 0 #0002,inset 0 3px 0 #fff7,0 2px 2px #30265866;transform:translateZ(21px) translateY(-11px);transition:transform .085s,filter .085s;backface-visibility:hidden;color:#202947;text-shadow:0 1px #ffffff55}.cap strong{font-size:clamp(24px,3vw,37px);line-height:1}.cap b{font-size:11px}.cap kbd{font:900 10px system-ui;background:#fff6;padding:0 5px;border-radius:4px}.pads button:hover:not(:disabled) .cap{filter:brightness(1.12)}.pads button:active:not(:disabled) .cap,.pads button.flash .cap{transform:translateZ(8px) translateY(-1px);filter:brightness(1.28);box-shadow:inset 0 2px 6px #fff9,0 0 20px var(--pad)}.pads button.flash .barrel{box-shadow:0 3px 0 var(--shade)}.console-edge{display:flex;align-items:center;gap:5px;margin:18px 3px 0;color:#666c8e;font-size:7px;letter-spacing:1px}.console-edge span{flex:1}.console-edge i{width:20px;height:3px;border-radius:2px;background:#8289a5}#progress{text-align:center;font-size:12px;font-weight:800;color:#716989;margin:14px 0 5px}.primary{display:block;background:#ff61ad;color:white;font-size:21px;letter-spacing:-.5px;border-radius:16px;min-width:200px;margin:16px auto 0;box-shadow:0 6px 0 #a73679;padding:12px 36px}#result{background:#fff;border:3px solid #302658;border-radius:16px;margin:16px auto 0;max-width:580px;padding:14px 18px;font-size:14px;font-weight:700;text-align:center;line-height:1.8;white-space:pre-line}.won #result{background:#ffec8a}.won #status{color:#ffdf65}.confetti{display:none;pointer-events:none;position:absolute;inset:0;overflow:hidden}.won .confetti{display:block}.confetti i{position:absolute;left:10%;top:-20px;width:12px;height:25px;background:#ff64b5;animation:fall 2.2s ease-in both}.confetti i:nth-child(2){left:22%;background:#ffdb4b;animation-delay:.2s}.confetti i:nth-child(3){left:34%;background:#38e2a3;animation-delay:.1s}.confetti i:nth-child(4){left:46%;background:#40a7ff;animation-delay:.5s}.confetti i:nth-child(5){left:58%;animation-delay:.3s}.confetti i:nth-child(6){left:70%;background:#ffdb4b;animation-delay:.6s}.confetti i:nth-child(7){left:82%;background:#38e2a3;animation-delay:.15s}.confetti i:nth-child(8){left:94%;background:#40a7ff;animation-delay:.4s}@keyframes fall{to{transform:translateY(650px) rotate(600deg)}}aside{background:#fff8e9;border:3px solid #302658;border-radius:23px;box-shadow:0 7px 0 #302658;padding:24px 20px;position:relative;margin-top:20px}.sticker{position:absolute;right:13px;top:-16px;background:#ffe567;font-weight:900;font-size:13px;padding:5px 13px;border:2px solid #302658;border-radius:7px;transform:rotate(7deg)}aside h2{font-size:20px;margin:4px 0 22px}.brightness{display:block;font-size:13px;font-weight:800}.brightness output{float:right;background:#eee5ff;border-radius:8px;padding:0 5px}input[type=range]{width:100%;min-height:30px;margin:10px 0;accent-color:#8467e8}.check{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;margin:12px 0}.check input{width:17px;height:17px;accent-color:#8467e8}.note{font-size:10px;line-height:1.8;color:#837794}.howto{border-top:2px dashed #d7cde1;border-bottom:2px dashed #d7cde1;margin:20px 0;padding:18px 0}.howto b{font-size:11px;letter-spacing:1px;color:#b34b91}.howto p{font-size:12px;line-height:1.9;font-weight:700;white-space:pre-line}aside a{font-size:12px;font-weight:800}.mix-preview{display:flex;gap:20px;align-items:center;justify-content:center;margin:22px auto 10px}.mix-preview p{font-size:11px}.mix-preview button{font-size:11px;padding:7px 12px;background:#e5dfff}#sample{width:90px;height:90px;border-radius:22px;border:4px solid #302658;box-shadow:0 7px 0 #aaa0bd;background:rgb(128,128,128)}.sliders{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:20px 0}.sliders label{font-weight:900;font-size:18px}.sliders output{float:right;font-size:13px;background:#eee5ff;border-radius:8px;padding:2px 7px}#r{accent-color:#ff536b}#g{accent-color:#25b87f}#b{accent-color:#40a7ff}footer{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800;padding:32px 4px 0}footer button{font-size:10px;padding:7px 12px;background:#ffffff99}dialog{max-width:620px;background:#fff8e9;color:#302658;border:4px solid #302658;border-radius:24px;padding:25px 30px;line-height:1.9;font-size:13px}dialog::backdrop{background:#302658aa}dialog button{background:#ffdf65}dialog h2{margin-top:0}[hidden]{display:none!important}.lab:fullscreen,.lab.expanded{width:100vw;max-width:none;height:100dvh;border:0;border-radius:0;background:#fff8e9;overflow:auto;box-shadow:none;padding:0 max(20px,calc((100vw - 1050px)/2))}.lab.expanded{position:fixed;inset:0;z-index:1000}.lab:fullscreen .console,.lab.expanded .console{max-width:740px}.lab:fullscreen .game-body,.lab.expanded .game-body{max-width:960px;margin:auto}.lab:fullscreen .display,.lab.expanded .display{max-width:720px;margin:auto}.lab:fullscreen .primary,.lab.expanded .primary{min-width:260px}.screen-locked{overflow:hidden}@media(min-height:850px){.lab:fullscreen .console-view,.lab.expanded .console-view{padding-top:40px;padding-bottom:25px}}@media(max-width:900px){.layout{grid-template-columns:1fr}aside{margin-top:10px}header{padding:22px}.tools{gap:7px}main{padding:0 20px 20px}nav{max-width:none}}@media(max-width:580px){header{flex-wrap:wrap;gap:20px}.brand{font-size:32px}.tools{width:100%;justify-content:space-between;font-size:10px}.tools button{font-size:11px;padding:8px 10px}nav{gap:10px;margin-top:0}nav button{font-size:14px;padding:12px}main{padding:0 12px 20px}.arena-top{padding:13px 15px}h1{font-size:18px}.arena-top button{font-size:10px;padding:7px 9px}.game-body{padding:12px 12px 20px}#stages{gap:4px;padding:10px 8px 3px}#stages li{padding:6px;gap:3px;font-size:9px}#stages li b{font-size:11px}.console{padding:16px 15px 12px;transform:rotateX(13deg)}.pads{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 22px;max-width:270px;margin:auto}.console-brand{margin-bottom:22px}.console-brand span{font-size:6px}.console-view{padding:17px 6px 9px;perspective:950px}.cap strong{font-size:30px}.cap b{font-size:12px}#status{font-size:16px}.display-label{font-size:10px}#lamp i{width:31px;height:31px}#lampCaption{font-size:8px}.lab:fullscreen,.lab.expanded{padding:0 10px}.sliders{gap:10px}.mix-preview{gap:12px}.primary{font-size:18px;padding:10px 28px}}@media(max-height:620px) and (min-width:581px){.lab:fullscreen .arena-top,.lab.expanded .arena-top{padding:8px 20px}.lab:fullscreen .game-body,.lab.expanded .game-body{padding-top:6px}.lab:fullscreen .console-view,.lab.expanded .console-view{padding-top:10px}.lab:fullscreen .console,.lab.expanded .console{max-width:480px}.lab:fullscreen .lamp-area,.lab.expanded .lamp-area{padding-top:5px}.lab:fullscreen #lamp i,.lab.expanded #lamp i{width:25px;height:25px}.lab:fullscreen #status,.lab.expanded #status{margin:5px}.lab:fullscreen .primary,.lab.expanded .primary{margin-top:8px;padding:8px 25px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Per-round confirmation stays inside the arena, including fullscreen. */
+.success-overlay{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:#302658a8;backdrop-filter:blur(4px);pointer-events:none}
+.success-card{text-align:center;background:#fff8e9;border:5px solid #302658;border-radius:30px;padding:30px 35px;box-shadow:0 10px 0 #302658,0 0 0 8px #ffdc54;max-width:480px;animation:success-pop .38s cubic-bezier(.18,.9,.3,1.3)}
+.success-check{display:block;border-radius:50%;width:85px;height:85px;line-height:80px;font-size:58px;font-weight:900;background:#45e0a2;color:#183e3a;margin:0 auto 10px;border:4px solid #302658;box-shadow:0 5px 0 #208565}
+.success-card strong{display:block;font-size:clamp(30px,5vw,52px);font-weight:900;letter-spacing:-2px;color:#a33086}
+.success-card p{font-size:14px;font-weight:800;line-height:1.7;margin:12px 0 0}
+.round-win .confetti{display:block;z-index:21}
+@keyframes success-pop{from{transform:scale(.65) rotate(-7deg);opacity:0}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.success-card,.round-win .confetti i{animation:none!important}}
+
+#lamp{gap:clamp(5px,1.5vw,14px);flex-wrap:nowrap}
+#lamp i{flex:0 1 39px;min-width:0;height:auto;aspect-ratio:1;background:radial-gradient(circle at 35% 25%,#ffffff55,transparent 65%),var(--slot-light,var(--light));box-shadow:0 3px 0 #111729,0 0 16px color-mix(in srgb,var(--slot-light,var(--light)),transparent 25%)}
+.target-chip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:15px;margin:18px 0 12px;font-size:13px}
+#changeTarget{font-size:12px;padding:8px 12px;background:#ffdf65}
+#targetSample{display:block;width:88px;height:66px;border-radius:14px;border:3px solid #fff8;box-shadow:0 4px 0 #111729}
+@media(max-width:580px){#lamp i{flex-basis:31px;border-width:3px}}
+
+.settings-tabs{display:flex;gap:7px;margin:0 0 22px}.settings-tabs button{flex:1;font-size:10px;padding:9px 5px;border-width:2px;border-radius:10px}.settings-tabs .selected{background:#ffdc54}
+.mood-badge{font-size:12px;font-weight:900;color:#226e58;background:#bdf3d6;padding:8px 12px;border-radius:10px;text-align:center}
+#moodPreview{height:66px;border:3px solid #302658;border-radius:15px;box-shadow:0 4px 0 #aaa0bd;background:#ff5377}
+.mood-picker{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;margin:15px 0}
+#moodColor{width:62px;height:42px;border:2px solid #302658;border-radius:9px;padding:3px;cursor:pointer}
+.mood-swatches{display:flex;gap:6px;margin-bottom:16px}.mood-swatches button{flex:1;min-width:0;padding:6px 0;border-width:2px;border-radius:10px}
+#moodRandom{width:100%;font-size:12px}#moodStatus{font-size:11px;line-height:1.7;margin:15px 0;color:#66597b}
+
+</style></head><body>
+<header><a class="brand" href="./">COLOR <span>LAB</span><i>PLAY!</i></a><div class="tools"><span id="connection">● 시뮬레이션</span><button id="connect">USB 연결</button><button id="guide">도움말</button></div></header>
+<main><nav aria-label="게임 선택"><button class="selected" data-game="memory"><small>01 · MEMORY</small>색 순서 기억하기</button><button data-game="rgb"><small>02 · COLOR MATCH</small>RGB 색 맞추기</button></nav>
+<div class="layout"><section class="lab" id="arena" aria-label="게임 화면"><div class="arena-top"><div><span id="tag">MEMORY</span><h1 id="title">색 순서 기억하기</h1></div><button id="full">⛶ 전체화면 플레이</button></div><div class="scoreline"><span id="record">최고 0단계</span><span id="stageCount">1 / 6 STAGES</span></div>
+<ol id="stages" aria-label="단계 진행"><li data-stage="1"><b>1</b><span>3개</span></li><li data-stage="2"><b>2</b><span>4개</span></li><li data-stage="3"><b>3</b><span>5개</span></li><li data-stage="4"><b>4</b><span>6개</span></li><li data-stage="5"><b>5</b><span>7개</span></li><li data-stage="6"><b>FINAL</b><span>8개</span></li></ol>
+<div class="game-body"><div class="display"><div class="display-label"><span id="instruction">빛이 나온 순서대로 버튼을 누르세요.</span><span class="live-dot" aria-hidden="true"></span></div><div class="lamp-area" id="memoryLamp"><div id="lamp" role="img" aria-label="꺼진 무드등"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p id="lampCaption">화면 무드등 · 시뮬레이션</p></div><div id="targetChip" class="target-chip" hidden><span id="targetSample" role="img" aria-label="맞출 색"></span><b>맞출 색</b><button id="changeTarget">맞출 색 바꾸기</button></div><p id="status" role="status" aria-live="polite">준비됐나요?</p></div>
+<div id="memory"><div class="console-view"><div class="console"><i class="screw s1"></i><i class="screw s2"></i><i class="screw s3"></i><i class="screw s4"></i><div class="console-brand" aria-hidden="true">COLOR LAB <span>MEMORY CONTROL / 04</span></div><div class="pads">
+<button data-pad="0" style="--pad:#ff536b;--shade:#b72246" aria-label="빨강 버튼 · 키보드 1"><span class="socket"></span><span class="barrel"></span><span class="cap"><strong>●</strong><b>빨강</b><kbd>1</kbd></span></button>
+<button data-pad="1" style="--pad:#38e2a3;--shade:#13976b" aria-label="초록 버튼 · 키보드 2"><span class="socket"></span><span class="barrel"></span><span class="cap"><strong>▲</strong><b>초록</b><kbd>2</kbd></span></button>
+<button data-pad="2" style="--pad:#40a7ff;--shade:#2260bd" aria-label="파랑 버튼 · 키보드 3"><span class="socket"></span><span class="barrel"></span><span class="cap"><strong>■</strong><b>파랑</b><kbd>3</kbd></span></button>
+<button data-pad="3" style="--pad:#ffdb4b;--shade:#c58b18" aria-label="노랑 버튼 · 키보드 4"><span class="socket"></span><span class="barrel"></span><span class="cap"><strong>◆</strong><b>노랑</b><kbd>4</kbd></span></button>
+</div><div class="console-edge" aria-hidden="true"><span>● SYSTEM READY</span><i></i><i></i><i></i></div></div></div><p id="progress">숫자 1–4 또는 터치로 입력</p></div>
+<div id="rgb" hidden><div class="mix-preview"><div id="sample"></div><div><b>내가 만든 색</b><p>R · G · B를 조절하세요.</p><p>조절한 색이 무드등에 실시간으로 표시됩니다.</p></div></div><div class="sliders"><label>R <output id="rv">128</output><input id="r" aria-label="빨강 값" type="range" min="0" max="255" value="128"></label><label>G <output id="gv">128</output><input id="g" aria-label="초록 값" type="range" min="0" max="255" value="128"></label><label>B <output id="bv">128</output><input id="b" aria-label="파랑 값" type="range" min="0" max="255" value="128"></label></div><button id="submit" class="primary">정답 제출!</button></div>
+<div id="feedback" class="success-overlay" role="status" aria-live="polite" hidden><div class="success-card"><span class="success-check" aria-hidden="true">✓</span><strong id="feedbackTitle">정답!</strong><p id="feedbackDetail"></p></div></div><div id="result" hidden></div><button id="start" class="primary">시작!</button><div class="confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+<aside><span class="sticker">READY?</span><h2>플레이 설정</h2><div class="settings-tabs" aria-label="설정 모드"><button id="gameSettingsTab" class="selected" aria-pressed="true">게임 설정</button><button id="moodSettingsTab" aria-pressed="false">무드등 테스트</button></div><label class="brightness">무드등 밝기 <output id="brightnessValue">35%</output><input id="brightness" aria-label="무드등 밝기" type="range" min="5" max="100" value="35"></label><div id="gameSettings"><label class="check"><input type="checkbox" id="sound" checked> 버튼 효과음</label><p class="note">기억 게임의 문제 색은 무드등에만 표시됩니다. RGB 게임은 화면의 목표색을 보고 내 색을 무드등으로 조절합니다. 70%를 넘기려면 새 micro:bit 코드를 설치하세요. 깜빡임·재시작이 생기면 밝기를 낮추세요.</p><div class="howto"><b>HOW TO PLAY</b><p id="shortHelp">순서 보기 → 버튼 입력<br>3개부터 8개까지, 각 단계 2문제!<br>같은 색이 연속으로 나올 수 있어요.</p></div></div><div id="moodSettings" hidden><p class="mood-badge">박수 색 변경 ON</p><div id="moodPreview" aria-label="선택한 무드등 색"></div><label class="mood-picker">출력할 색 <input id="moodColor" type="color" value="#ff5377" aria-label="무드등 테스트 색"></label><div class="mood-swatches"><button data-mood="#ff0000" aria-label="빨강" style="background:#ff536b">●</button><button data-mood="#00ff00" aria-label="초록" style="background:#38e2a3">▲</button><button data-mood="#0000ff" aria-label="파랑" style="background:#40a7ff">■</button><button data-mood="#ffff00" aria-label="노랑" style="background:#ffdb4b">◆</button><button data-mood="#ffffff" aria-label="흰색" style="background:white">○</button></div><button id="moodRandom">랜덤 색 테스트</button><p id="moodStatus" role="status"></p><p class="note">micro:bit V2 가까이에서 박수를 쳐보세요. 소리 감지는 테스트 모드에서만 켜집니다. 게임 시작 시 자동으로 꺼집니다.</p></div><a href="data:text/plain;charset=utf-8,%2F%2F%20COLOR%20LAB%20%2F%20micro%3Abit%20V2%20%2F%20MakeCode%20JavaScript%0A%2F%2F%20%ED%99%95%EC%9E%A5%3A%20neopixel%20%2F%20LED%204%EA%B0%9C%20%2F%20P1%2C%203V%2C%20GND%0Alet%20strip%20%3D%20neopixel.create(DigitalPin.P1%2C%204%2C%20NeoPixelMode.RGB)%0Alet%20gameMode%20%3D%20true%0Alet%20level%20%3D%2035%0Alet%20red%20%3D%200%0Alet%20green%20%3D%200%0Alet%20blue%20%3D%200%0Alet%20lastClap%20%3D%200%0Alet%20soundWasLoud%20%3D%20false%0Astrip.setBrightness(level%20*%20255%20%2F%20100)%0Astrip.clear()%0Astrip.show()%0Aserial.redirectToUSB()%0Aserial.setBaudRate(BaudRate.BaudRate115200)%0Afunction%20draw()%20%7B%0A%20%20%20%20strip.setBrightness(level%20*%20255%20%2F%20100)%0A%20%20%20%20strip.showColor(neopixel.rgb(red%2C%20green%2C%20blue))%0A%20%20%20%20if%20(!gameMode)%20serial.writeLine(%22COLOR%3A%22%20%2B%20red%20%2B%20%22%2C%22%20%2B%20green%20%2B%20%22%2C%22%20%2B%20blue)%0A%7D%0Aserial.onDataReceived(serial.delimiters(Delimiters.NewLine)%2C%20function%20()%20%7B%0A%20%20%20%20let%20command%20%3D%20serial.readUntil(serial.delimiters(Delimiters.NewLine)).trim()%0A%20%20%20%20if%20(command%20%3D%3D%20%22HELLO%22)%20%7B%0A%20%20%20%20%20%20%20%20gameMode%20%3D%20true%0A%20%20%20%20%20%20%20%20serial.writeLine(%22COLORLAB%3A1%22)%0A%20%20%20%20%7D%20else%20if%20(command%20%3D%3D%20%22MODE%3AGAME%22)%20%7B%0A%20%20%20%20%20%20%20%20gameMode%20%3D%20true%0A%20%20%20%20%7D%20else%20if%20(command%20%3D%3D%20%22MODE%3AMOOD%22)%20%7B%0A%20%20%20%20%20%20%20%20gameMode%20%3D%20false%0A%20%20%20%20%20%20%20%20lastClap%20%3D%20input.runningTime()%0A%20%20%20%20%20%20%20%20soundWasLoud%20%3D%20input.soundLevel()%20%3E%20155%0A%20%20%20%20%7D%20else%20if%20(command.indexOf(%22BRIGHT%3A%22)%20%3D%3D%200)%20%7B%0A%20%20%20%20%20%20%20%20level%20%3D%20Math.max(5%2C%20Math.min(100%2C%20parseInt(command.substr(7))))%0A%20%20%20%20%20%20%20%20draw()%0A%20%20%20%20%7D%20else%20if%20(command.indexOf(%22RGB%3A%22)%20%3D%3D%200)%20%7B%0A%20%20%20%20%20%20%20%20let%20parts%20%3D%20command.substr(4).split(%22%2C%22)%0A%20%20%20%20%20%20%20%20if%20(parts.length%20%3D%3D%203)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20red%20%3D%20Math.max(0%2C%20Math.min(255%2C%20parseInt(parts%5B0%5D)))%0A%20%20%20%20%20%20%20%20%20%20%20%20green%20%3D%20Math.max(0%2C%20Math.min(255%2C%20parseInt(parts%5B1%5D)))%0A%20%20%20%20%20%20%20%20%20%20%20%20blue%20%3D%20Math.max(0%2C%20Math.min(255%2C%20parseInt(parts%5B2%5D)))%0A%20%20%20%20%20%20%20%20%20%20%20%20draw()%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%7D)%0A%2F%2F%20%EB%B0%95%EC%88%98%20%EC%A1%B0%EC%9E%91%EC%9D%80%20%EB%8F%85%EB%A6%BD%20%EB%AC%B4%EB%93%9C%EB%93%B1%20%EB%AA%A8%EB%93%9C%EC%97%90%EB%A7%8C%20%ED%97%88%EC%9A%A9.%20%EC%9B%B9%20%EC%8B%A4%ED%97%98%EC%97%90%EC%84%9C%EB%8A%94%20%ED%95%AD%EC%83%81%20%EB%B9%84%ED%99%9C%EC%84%B1%ED%99%94.%0Abasic.forever(function%20()%20%7B%0A%20%20%20%20let%20volume%20%3D%20input.soundLevel()%0A%20%20%20%20if%20(volume%20%3C%20130)%20soundWasLoud%20%3D%20false%0A%20%20%20%20if%20(!gameMode%20%26%26%20volume%20%3E%20155%20%26%26%20!soundWasLoud%20%26%26%20input.runningTime()%20-%20lastClap%20%3E%20650)%20%7B%0A%20%20%20%20%20%20%20%20soundWasLoud%20%3D%20true%0A%20%20%20%20%20%20%20%20lastClap%20%3D%20input.runningTime()%0A%20%20%20%20%20%20%20%20red%20%3D%20randint(0%2C%20255)%0A%20%20%20%20%20%20%20%20green%20%3D%20randint(0%2C%20255)%0A%20%20%20%20%20%20%20%20blue%20%3D%20randint(0%2C%20255)%0A%20%20%20%20%20%20%20%20draw()%0A%20%20%20%20%7D%0A%20%20%20%20basic.pause(40)%0A%7D)%0A" download="color-lab-microbit.ts">micro:bit 코드 ↓</a><p class="note">노트북 Chrome / Edge + USB<br>태블릿에서는 화면으로 플레이</p></aside></div>
+<footer><span>COLOR LAB / SCIENCE JAM</span><button id="reset">최고 기록 삭제</button></footer></main>
+<dialog id="help"><h2>플레이 방법</h2><p><b>기억 게임</b> · 1단계 3개부터 매 단계 하나씩 늘어납니다. 각 단계에서 새 무작위 순서를 2번 맞히면 통과합니다. 최종 6단계는 8개씩 2번! 같은 색도 연속으로 나옵니다. 숫자 1–4 또는 터치로 입력하세요.</p><p><b>RGB 게임</b> · 화면의 맞출 색을 보고 RGB를 조절해 3문제를 풀어보세요. 조절 중인 색은 무드등에 실시간으로 나오며, ‘맞출 색 바꾸기’로 현재 문제의 목표색만 바꿀 수 있습니다. 점수는 RGB 값 차이 기준이며 화면과 LED 색은 다르게 보일 수 있습니다.</p><p><b>전체화면</b> · 게임 위쪽 ‘전체화면 플레이’를 누르세요. ‘나가기’ 또는 Esc로 돌아옵니다. 지원하지 않는 브라우저에서는 화면 안을 가득 채웁니다.</p><h3>무드등 연결</h3><ol><li>전원을 분리하고 micro:bit V2와 네오픽셀 4개를 P1·3V·GND에 연결하세요.</li><li>MakeCode에 neopixel 확장을 추가한 뒤 다운로드한 코드를 JavaScript 탭에 넣어 설치하세요.</li><li>노트북 Chrome/Edge에서 데이터 USB 케이블을 연결하고 ‘USB 연결’을 누르세요.</li></ol><p>별도 태블릿과 노트북 간 원격 제어는 지원하지 않습니다. 플레이 중 박수 조작은 꺼집니다.</p><button id="closeHelp">확인!</button></dialog><script type="module">
+const COLORS=[{name:'빨강',rgb:[255,0,0]},{name:'초록',rgb:[0,255,0]},{name:'파랑',rgb:[0,0,255]},{name:'노랑',rgb:[255,255,0]}];
+const scoreRGB=(target,guess)=>Math.round(100*(1-target.reduce((sum,n,i)=>sum+Math.abs(n-guess[i]),0)/765));
+function randomColor(rng=Math.random){const values=Array.from({length:3},()=>Math.floor(rng()*16)*17);if(Math.max(...values)<85)values[Math.floor(rng()*3)]=170;return values;}
+const memorySequence=(length,rng=Math.random)=>Array.from({length},()=>Math.floor(rng()*COLORS.length));
+const rgbCSS=values=>`rgb(${values.join(',')})`;
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let game='memory',phase='idle',token=0,sequence=[],inputAt=0,enteredColors=[],level=0,memoryRound=1,round=0,scores=[],target=[0,0,0],light=[0,0,0],busy=false;
+let liveTimer=null;
+let settingsMode='game',moodColor=[255,83,119];
+let port=null,writer=null,reader=null,confirmed=false,serialBusy=false,queue=Promise.resolve(),ack=null;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const readRecord=key=>{try{return Number(localStorage.getItem('colorlab-'+key))||0;}catch{return 0;}};
+const saveRecord=(key,value)=>{try{localStorage.setItem('colorlab-'+key,String(Math.max(readRecord(key),value)));}catch{}};
+// Remove only the previous games' known scores, never unrelated browser data.
+try{['light-flower-best-v2','light-flower-best','crossy-best','crossy-friends-best'].forEach(k=>localStorage.removeItem(k));}catch{}
+function record(){ $('#record').textContent=game==='memory'?`최고 ${Math.min(6,readRecord('memory'))} / 6단계`:`최고 평균 ${readRecord('rgb')}점`; }
+function stages(){const current=Math.max(1,level);$('#stages').hidden=game!=='memory';$('#stageCount').textContent=game==='memory'?`${current} / 6단계 · ${memoryRound} / 2문제`:`${Math.max(1,round)} / 3 ROUNDS`;$$('[data-stage]').forEach(el=>{const n=Number(el.dataset.stage);el.classList.toggle('active',n===current&&phase!=='won');el.classList.toggle('done',n<current||phase==='won');el.setAttribute('aria-current',n===current?'step':'false');});}
+let audioContext;
+function clickSound(index){if(!$('#sound').checked)return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;audioContext??=new Audio();void audioContext.resume();const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.type='sine';osc.frequency.setValueAtTime([330,415,494,660][index],audioContext.currentTime);gain.gain.setValueAtTime(.055,audioContext.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.12);osc.connect(gain);gain.connect(audioContext.destination);osc.start();osc.stop(audioContext.currentTime+.13);}catch{}}
+function message(text){$('#status').textContent=text;}
+function renderLight(){
+  const memory=game==='memory',answerMode=memory&&['input','between','won','result'].includes(phase);
+  const count=Math.max(3,Math.min(8,level+2));
+  $('#memoryLamp').hidden=!memory;
+  // Prompt colors stay USB-only when connected. Input history is always the user's own choices.
+  $('#lamp').style.setProperty('--light',rgbCSS(!confirmed&&!answerMode?light:[0,0,0]));
+  $$('#lamp i').forEach((slot,i)=>{
+    slot.hidden=i>=count;
+    const chosen=answerMode?enteredColors[i]:undefined;
+    slot.style.setProperty('--slot-light',chosen===undefined?'var(--light)':rgbCSS(COLORS[chosen].rgb));
+    slot.setAttribute('aria-label',`${i+1}번: ${chosen===undefined?'미입력':COLORS[chosen].name}`);
+  });
+  $('#lamp').setAttribute('aria-label',answerMode?`내가 입력한 색 ${enteredColors.length} / ${count}`:confirmed?'문제 색은 실제 무드등에만 표시됩니다':'화면 무드등');
+  $('#lampCaption').textContent=answerMode?'내 입력 · 왼쪽부터 차례대로':confirmed?'실제 무드등을 보고 기억하세요':'화면 무드등 · 시뮬레이션';
+  const showTarget=!memory&&phase!=='idle';
+  $('#targetChip').hidden=!showTarget;
+  $('#targetSample').style.background=showTarget?rgbCSS(target):'transparent';
+  $('#instruction').textContent=memory?'빛이 나온 순서대로 버튼을 누르세요.':'화면의 맞출 색을 보고 조절하세요. 무드등에는 내 색이 실시간으로 나옵니다.';
+}
+function send(command,valid=()=>true){const active=writer;if(!active)return Promise.resolve();queue=queue.then(async()=>{if(writer===active&&valid())await active.write(new TextEncoder().encode(command+'\n'));}).catch(()=>{void disconnect('연결이 끊겼습니다. 시뮬레이션으로 다시 시작하세요.');});return queue;}
+async function showLight(rgb,valid=()=>true){if(!valid())return;light=[...rgb];renderLight();if(confirmed)await send('RGB:'+rgb.join(','),valid);}
+function setPads(enabled){$$('[data-pad]').forEach(b=>b.disabled=!enabled);}
+function cancel(){clearTimeout(liveTimer);liveTimer=null;hideFeedback();token++;phase='idle';busy=false;enteredColors=[];$('#arena').classList.remove('won');setPads(false);$$('[data-pad]').forEach(b=>b.classList.remove('flash'));$('#changeTarget').disabled=true;$('#submit').disabled=true;void showLight([0,0,0]);}
+function selectGame(next){leaveMood();cancel();game=next;level=0;memoryRound=1;round=0;$('#result').hidden=true;$('#memory').hidden=game!=='memory';$('#rgb').hidden=game!=='rgb';$$('[data-game]').forEach(b=>{b.classList.toggle('selected',b.dataset.game===game);b.setAttribute('aria-pressed',String(b.dataset.game===game));});$('#tag').textContent=game==='memory'?'MEMORY':'COLOR MATCH';$('#title').textContent=game==='memory'?'색 순서 기억하기':'RGB 색 맞추기';$('#instruction').textContent=game==='memory'?'빛이 나온 순서대로 버튼을 누르세요.':'위쪽 무드등과 같은 색을 만드세요.';$('#shortHelp').textContent=game==='memory'?'순서 보기 → 버튼 입력\n3개부터 8개까지, 각 단계 2문제!\n매 문제 새 순서 · 같은 색 연속 가능':'슬라이더로 색 조절 → 정답 제출\n3문제 평균 점수에 도전!';$('#start').hidden=false;$('#start').textContent='시작!';$('#progress').textContent='숫자 1–4 또는 터치로 입력';message(game==='memory'?'준비됐나요? 1단계는 3개!':'3문제 · 100점 만점');record();stages();renderLight();}
+async function playSequence(){const own=++token;phase='show';enteredColors=[];setPads(false);$('#start').hidden=true;$('#result').hidden=true;stages();message(`${level===6?'최종 ':''}${level}단계 · ${sequence.length}개 · ${memoryRound}/2문제`);$('#progress').textContent='빛을 보고 기억하세요';await showLight([0,0,0]);await wait(650);for(const item of sequence){if(own!==token)return;await showLight(COLORS[item].rgb);await wait(800);if(own!==token)return;await showLight([0,0,0]);await wait(350);}if(own!==token)return;phase='input';inputAt=0;renderLight();setPads(true);message('같은 순서로 눌러주세요!');$('#progress').textContent=`입력 0 / ${sequence.length}`;}
+function hideFeedback(){
+  $('#feedback').hidden=true;
+  $('#arena').classList.remove('round-win');
+}
+function successSound(stageComplete){
+  if(!$('#sound').checked)return;
+  try{
+    const Audio=window.AudioContext||window.webkitAudioContext;
+    if(!Audio)return;
+    audioContext??=new Audio();void audioContext.resume();
+    (stageComplete?[523,659,784,1047]:[659,880]).forEach((frequency,i)=>{
+      const osc=audioContext.createOscillator(),gain=audioContext.createGain(),at=audioContext.currentTime+i*.12;
+      osc.frequency.value=frequency;gain.gain.setValueAtTime(.065,at);
+      gain.gain.exponentialRampToValueAtTime(.001,at+.23);
+      osc.connect(gain);gain.connect(audioContext.destination);osc.start(at);osc.stop(at+.24);
+    });
+  }catch{}
+}
+function showFeedback(title,detail){
+  $('#feedbackTitle').textContent=title;$('#feedbackDetail').textContent=detail;
+  $('#feedback').hidden=false;$('#arena').classList.add('round-win');
+}
+async function pressPad(index){
+  if(phase!=='input'||busy)return;
+  busy=true;
+  const own=token,button=$(`[data-pad="${index}"]`);
+  button.classList.add('flash');clickSound(index);
+  enteredColors.push(index);renderLight();
+  await wait(150);button.classList.remove('flash');
+  if(own!==token)return;
+  busy=false;
+  if(index!==sequence[inputAt]){
+    phase='result';setPads(false);message('앗, 순서가 달라요!');
+    $('#result').hidden=false;
+    // Connected play never exposes the target sequence, even after a wrong answer.
+    $('#result').textContent=confirmed
+      ? `${level-1}단계 완료 · ${level}단계 ${memoryRound}번째 문제에서 종료`
+      : `${level-1}단계 완료\n정답: ${sequence.map(i=>COLORS[i].name).join(' → ')}`;
+    $('#start').hidden=false;$('#start').textContent='다시 도전!';
+    return;
+  }
+  inputAt++;message(`✓ 정답! ${inputAt} / ${sequence.length}`);
+  $('#progress').textContent='✓ '.repeat(inputAt)+'○ '.repeat(sequence.length-inputAt);
+  if(inputAt!==sequence.length)return;
+  phase='between';setPads(false);
+  const stageComplete=memoryRound===2,finished=stageComplete&&level===6;
+  if(stageComplete){saveRecord('memory',level);record();}
+  successSound(stageComplete);
+  showFeedback(finished?'ALL CLEAR!':stageComplete?'단계 클리어!':'정답!',
+    finished?'6단계 · 12문제 모두 성공!':stageComplete
+      ? `${level}단계 2문제 성공! 다음은 ${level+3}개예요.`
+      : `${level}단계 1/2 성공! 같은 개수의 새 순서가 나와요.`);
+  message(finished?'ALL CLEAR!':stageComplete?`${level}단계 클리어!`:'정답! 1/2 성공');
+  if(finished){
+    phase='won';stages();$('#arena').classList.add('won');
+    $('#result').hidden=false;$('#result').textContent='6단계 클리어!\n마지막 8개까지 두 번 모두 맞혔어요.';
+    $('#start').hidden=false;$('#start').textContent='한 번 더!';
+    await wait(2300);if(own===token)hideFeedback();return;
+  }
+  await wait(1900);if(own!==token)return;
+  hideFeedback();
+  if(stageComplete){level++;memoryRound=1;}else memoryRound=2;
+  sequence=memorySequence(level+2);
+  void playSequence();
+}
+function guess(){return ['r','g','b'].map(id=>Number($('#'+id).value));}
+function mix(){['r','g','b'].forEach(id=>$('#'+id+'v').textContent=$('#'+id).value);$('#sample').style.background=rgbCSS(guess());scheduleLiveColor();}
+function flushLiveColor(){clearTimeout(liveTimer);liveTimer=null;if(game!=='rgb'||phase!=='mix'||settingsMode!=='game')return;const own=token;void showLight(guess(),()=>own===token&&game==='rgb'&&settingsMode==='game');}
+function scheduleLiveColor(){if(game!=='rgb'||phase!=='mix'||settingsMode!=='game'||liveTimer!==null)return;liveTimer=setTimeout(flushLiveColor,40);}
+function newTarget(){const previous=target;target=randomColor();if(target.every((v,i)=>v===previous[i]))target[0]=target[0]===255?170:255;}
+function rgbRound(){hideFeedback();token++;busy=false;phase='mix';round++;stages();newTarget();['r','g','b'].forEach(id=>$('#'+id).value=128);mix();$('#result').hidden=true;$('#start').hidden=true;$('#submit').disabled=false;$('#changeTarget').disabled=false;message(`${round} / 3 · 이 색을 맞혀보세요!`);flushLiveColor();}
+function start(){leaveMood();cancel();if(game==='memory'){sequence=memorySequence(3);level=1;memoryRound=1;void playSequence();}else{round=0;scores=[];rgbRound();}}
+$('#start').onclick=()=>game==='rgb'&&phase==='between'?rgbRound():start();
+$$('[data-game]').forEach(b=>b.onclick=()=>selectGame(b.dataset.game));
+$$('[data-pad]').forEach(b=>b.onclick=()=>void pressPad(Number(b.dataset.pad)));
+document.addEventListener('keydown',e=>{if(e.repeat||$('#help').open||/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;if(game==='memory'&&/^[1-4]$/.test(e.key)){e.preventDefault();void pressPad(Number(e.key)-1);}});
+['r','g','b'].forEach(id=>$('#'+id).oninput=mix);
+$('#changeTarget').onclick=()=>{
+  if(game!=='rgb'||phase!=='mix'||settingsMode!=='game')return;
+  token++;hideFeedback();newTarget();renderLight();flushLiveColor();
+  message(`${round} / 3 · 맞출 색을 바꿨어요!`);
+};
+$('#submit').onclick=()=>{if(phase!=='mix'||busy)return;flushLiveColor();const values=guess(),score=scoreRGB(target,values);scores.push(score);if(score===100){successSound(true);showFeedback('정답!','RGB가 정확히 일치해요. 100점!');const own=token;void wait(1900).then(()=>{if(token===own)hideFeedback();});}phase=round<3?'between':'result';$('#submit').disabled=true;$('#changeTarget').disabled=true;$('#result').hidden=false;$('#result').textContent=`${score}점 / 100점\n정답 RGB: ${target.join(' · ')}\n내 RGB: ${values.join(' · ')}\n점수 = 100 × (1 − 세 채널의 절대 오차 합 / 765)`;$('#start').hidden=false;if(round<3){message('결과를 비교하고 다음 색에 도전하세요.');$('#start').textContent='다음 문제 ↗';}else{const average=Math.round(scores.reduce((a,b)=>a+b,0)/3);saveRecord('rgb',average);record();message(`실험 완료 · 평균 ${average}점`);$('#result').textContent+=`\n3문제 점수: ${scores.join(' / ')}`;$('#start').textContent='다른 색으로 도전하기';}};
+
+$('#brightness').oninput=()=>{$('#brightnessValue').textContent=$('#brightness').value+'%';if(confirmed)void send('BRIGHT:'+$('#brightness').value);};
+$('#reset').onclick=()=>{if(!confirm('이 기기에 저장된 두 게임의 최고 기록을 삭제할까요?'))return;try{localStorage.removeItem('colorlab-memory');localStorage.removeItem('colorlab-rgb');}catch{}record();message('이 기기의 최고 기록을 삭제했습니다.');};
+$('#guide').onclick=()=>{cancel();$('#start').hidden=false;$('#start').textContent='실험 다시 시작 ↗';message('안내를 닫은 뒤 다시 시작하세요.');$('#help').showModal();};$('#closeHelp').onclick=()=>$('#help').close();
+let expanded=false;
+function syncFullscreen(){const full=document.fullscreenElement===$('#arena')||expanded;$('#full').textContent=full?'✕ 나가기':'⛶ 전체화면 플레이';$('#full').setAttribute('aria-pressed',String(full));document.body.classList.toggle('screen-locked',full);}
+$('#full').onclick=async()=>{if(document.fullscreenElement){await document.exitFullscreen();return;}if(expanded){expanded=false;$('#arena').classList.remove('expanded');syncFullscreen();return;}try{if(!$('#arena').requestFullscreen)throw new Error('unsupported');await $('#arena').requestFullscreen();}catch{expanded=true;$('#arena').classList.add('expanded');}syncFullscreen();};
+document.addEventListener('fullscreenchange',syncFullscreen);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&expanded){expanded=false;$('#arena').classList.remove('expanded');syncFullscreen();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&['show','input','mix','between'].includes(phase)){cancel();$('#start').hidden=false;$('#start').textContent='실험 다시 시작 ↗';message('화면을 벗어나 실험이 중단되었습니다. 다시 시작하세요.');}});
+async function readSerial(active){let buffer='';try{while(port===active){const {value,done}=await reader.read();if(done)break;buffer+=new TextDecoder().decode(value);let at;while((at=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,at).trim();buffer=buffer.slice(at+1);if(line==='COLORLAB:1')ack?.();else if(settingsMode==='mood'&&line.startsWith('COLOR:')){const rgb=line.slice(6).split(',').map(Number);if(rgb.length===3&&rgb.every(v=>Number.isInteger(v)&&v>=0&&v<=255)){moodColor=rgb;renderMood();}}}if(buffer.length>1000)buffer='';}}catch{}finally{if(port===active)void disconnect('USB 연결이 끊겼습니다. 다시 시작하세요.');}}
+async function connect(){if(serialBusy)return;if(!navigator.serial){message('USB는 노트북 Chrome/Edge에서 지원합니다. 이 기기에서는 시뮬레이션으로 플레이하세요.');return;}serialBusy=true;$('#connect').disabled=true;cancel();try{const candidate=await navigator.serial.requestPort();await candidate.open({baudRate:115200});port=candidate;writer=port.writable.getWriter();reader=port.readable.getReader();void readSerial(port);const ready=new Promise(resolve=>ack=resolve);await send('HELLO');const valid=await Promise.race([ready.then(()=>true),wait(2500).then(()=>false)]);ack=null;if(!valid)throw new Error('firmware');confirmed=true;await send(settingsMode==='mood'?'MODE:MOOD':'MODE:GAME');await send('BRIGHT:'+$('#brightness').value);if(settingsMode==='mood')await applyMood(moodColor);else await showLight([0,0,0]);$('#connection').textContent='● micro:bit 연결됨';$('#connect').textContent='연결 해제';message('연결 확인 완료. 실험을 시작하세요.');}catch(error){await disconnect(error.name==='NotFoundError'?'연결을 취소했습니다. 시뮬레이션으로 체험할 수 있습니다.':'연결 확인에 실패했습니다. 새 micro:bit 코드와 USB 케이블을 확인하세요.');}finally{serialBusy=false;$('#connect').disabled=false;$('#start').hidden=false;$('#start').textContent='실험 시작 ↗';}}
+async function disconnect(text='연결을 해제했습니다. 시뮬레이션으로 다시 시작하세요.'){const oldPort=port,oldWriter=writer,oldReader=reader;port=null;writer=null;reader=null;confirmed=false;ack=null;cancel();try{await oldReader?.cancel();oldReader?.releaseLock();}catch{}try{await oldWriter?.abort();oldWriter?.releaseLock();}catch{}try{await oldPort?.close();}catch{}queue=Promise.resolve();$('#connection').textContent='● 시뮬레이션';$('#connect').textContent='USB 무드등 연결';$('#start').hidden=false;$('#start').textContent='실험 다시 시작 ↗';message(text);renderLight();renderMood();}
+$('#connect').onclick=()=>{if(serialBusy)return;if(port)void disconnect();else void connect();};
+navigator.serial?.addEventListener('disconnect',e=>{if(e.target===port)void disconnect();});
+function renderMood(){
+  $('#moodPreview').style.background=rgbCSS(moodColor);
+  $('#moodColor').value='#'+moodColor.map(v=>v.toString(16).padStart(2,'0')).join('');
+  $('#moodStatus').textContent=confirmed?'무드등 연결됨 · 박수를 치면 색이 바뀝니다.':'시뮬레이션 · 실제 박수 감지는 micro:bit USB 연결 후 가능합니다.';
+}
+function settingsUI(){
+  const mood=settingsMode==='mood';
+  $('#gameSettings').hidden=mood;$('#moodSettings').hidden=!mood;
+  $('#gameSettingsTab').classList.toggle('selected',!mood);$('#moodSettingsTab').classList.toggle('selected',mood);
+  $('#gameSettingsTab').setAttribute('aria-pressed',String(!mood));$('#moodSettingsTab').setAttribute('aria-pressed',String(mood));
+  renderMood();
+}
+function leaveMood(){
+  if(settingsMode!=='mood')return;
+  settingsMode='game';settingsUI();void send('MODE:GAME');
+}
+async function applyMood(rgb){
+  if(settingsMode!=='mood')return;
+  moodColor=[...rgb];renderMood();
+  if(confirmed)await send('RGB:'+moodColor.join(','));
+}
+$('#moodSettingsTab').onclick=()=>{
+  if(settingsMode==='mood')return;
+  cancel();settingsMode='mood';settingsUI();
+  $('#result').hidden=true;$('#start').hidden=false;$('#start').textContent='게임 시작';
+  message('무드등 테스트 중 · 게임은 중단됩니다.');
+  // Queue the mode before the color so clap detection never overlaps a game.
+  void send('MODE:MOOD');void applyMood(moodColor);
+};
+$('#gameSettingsTab').onclick=()=>{if(settingsMode==='mood'){leaveMood();selectGame(game);}};
+$('#moodColor').oninput=e=>void applyMood([1,3,5].map(i=>parseInt(e.target.value.slice(i,i+2),16)));
+$$('[data-mood]').forEach(button=>button.onclick=()=>void applyMood([1,3,5].map(i=>parseInt(button.dataset.mood.slice(i,i+2),16))));
+$('#moodRandom').onclick=()=>void applyMood(randomColor());
+selectGame('memory');mix();settingsUI();
+
+</script></body></html>
+
